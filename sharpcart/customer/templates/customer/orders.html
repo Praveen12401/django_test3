@@ -1,0 +1,24 @@
+{% extends "customer/customermaster.html" %}
+
+{% block content %}
+<h2>Your Order History</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Sample order - replace with actual data -->
+        <tr>
+            <td>#12345</td>
+            <td>2023-06-15</td>
+            <td>$99.99</td>
+            <td>Delivered</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

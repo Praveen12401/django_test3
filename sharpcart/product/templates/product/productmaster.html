@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}SharpCart - Products{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        .horizontal-menu {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+        }
+        .vertical-menu {
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            padding: 10px;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .login-section {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'logo.png' %}" alt="SharpCart Logo" height="50">
+        <h1>SharpCart</h1>
+        <div class="login-section">
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}!</span>
+                <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-danger">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-sm btn-outline-primary">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="horizontal-menu">
+        <a href="{% url 'product_list' %}" class="text-white mr-3">All Products</a>
+        <a href="#" class="text-white mr-3">Categories</a>
+    </div>
+
+    <div class="vertical-menu">
+        <a href="{% url 'product_list' %}">All Products</a>
+        <a href="#">Electronics</a>
+        <a href="#">Clothing</a>
+        <a href="#">Home & Kitchen</a>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer">
+        &copy; {% now "Y" %} SharpCart. All rights reserved.
+    </div>
+</body>
+</html>
